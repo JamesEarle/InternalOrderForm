@@ -22,8 +22,8 @@ label, input, select, textarea {
 }
 
 .column {
-  margin-top:10%;
-  background: #ebebe0;
+  margin-top:5%;
+  background: #F5F5F5;
   max-width:700px;
   border: 1px solid gray;
 }

@@ -3,12 +3,41 @@ body {
 }
 
 hr {
-  width: 85%;
+  width: 93%;
   border: 1px solid gray;
+}
+
+form > hr {
+  width:100%;
 }
 
 label, input, select, textarea {
   margin:5px;
+}
+
+textarea {
+  width:100%;
+  max-width: 100%;
+}
+
+footer {
+  margin-bottom: 20px;
+}
+
+textarea, select, input {
+    border: 2px solid #dadada;
+    border-radius: 3px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+span {
+  color: red;
+  margin-right:5px;
 }
 
 .content {
@@ -22,10 +51,11 @@ label, input, select, textarea {
 }
 
 .column {
-  margin-top:5%;
+  margin-top:40px;
   background: #F5F5F5;
   max-width:700px;
   border: 1px solid gray;
+  margin-bottom: 40px;
 }
 
 .form {

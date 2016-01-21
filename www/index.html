@@ -6,47 +6,41 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
-
 <body>
-  
-  <div class="content">
-    
-    <div class="center column">
-      
-      <h1>Zip Telecom Inc. Order Processing Form</h1>
-      
-      <hr>
-      
-      <div class="form">
-        <form action="submit.php">
-          <label for="full_name">Full Name</label>
+<div class="content">
+  <div class="center column">
+    <h1>Order Processing Form</h1>
+    <hr>
+    <div class="form">
+      <form action="submit.php">
+          <label for="full_name"><span>*</span>Full Name</label>
           <input type="text" name="full_name" id="full_name">
           <br/>
-          <label for="email">Email Address</label>
+          <label for="email"><span>*</span>Email Address</label>
           <input type="text" name="email" id="email">
           <br/>
-          <label for="order_urgency">Urgency of This Order</label>
+          <label for="order_urgency"><span>*</span>Urgency of This Order</label>
           <select name="order_urgency" id="order_urgency">
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
-          <br/>
-          <label for="already_purchased">Already Purchased?</label>
+          <hr>
+          <h2>Item Details</h2>
+          <label for="already_purchased"><span>*</span>Already Purchased?</label>
           <select name="already_purchased" id="already_purchased">
             <option value="no">No</option>
             <option value="yes">Yes</option>
           </select>
           <br/>
-          <label for="item_link">Link to Item(s) You Need To Purchase (Enter multiple links for the same item if you want someone to price check with shipping)</label>
+          <label for="item_link"><span>*</span>Link to Item(s) You Need To Purchase (Enter multiple links for the same item if you want someone to price check with shipping)</label>
           <br/>
-          <textarea rows="5" cols="80" name="item_link" id="item_link"></textarea>
+          <textarea rows="3" name="item_link" id="item_link"></textarea>
           <br/>
-          <label for="quantity">Quantity</label>
-          <input name="quantity" size="3">
-          <br/>
-          <label for="resale">Is this an expense or for resale?</label>
+          <label for="quantity"><span>*</span>Quantity (0-9 Only)</label>
+          <input name="quantity" id="quantity" size="3" onkeypress="return validate(event)">
+          <hr>
+          <label for="resale"><span>*</span>Is this an expense or for resale?</label>
           <select name="resale" id="resale">
             <option value="donotknow">Don't Know</option>
             <option value="expense">Expense</option>
@@ -56,31 +50,48 @@
           <label for="if_expense">If this is an expense, which internal company?</label>
           <select name="if_expense" id="if_expense">
             <option value="ziptel">ZipTel</option>
-            <option value="bluewire">Bluewire</option>
+            <option value="bluewire">BlueWire</option>
           </select>
           <br/>
           <label for="if_resale">If this is for resale, who are we selling it to?</label>
           <input type="text" name="if_resale" id="if_resale">
           <br/>
-          <label for="if_resale_customer">Is the customer above a ZipTel customer or a Bluewire customer?</label>
+          <label for="if_resale_customer">Is the customer above a ZipTel customer or a BlueWire customer?</label>
           <select name="if_resale_customer" id="if_resale_customer">
             <option value="ziptel">ZipTel</option>
-            <option value="bluewire">Bluewire</option>
+            <option value="bluewire">BlueWire</option>
           </select>
           <br/>
-          <label for="purpose">Describe the project or purpose of this purchase</label>
-          <textarea rows="3" cols="80"></textarea>
+          <label for="purpose"><span>*</span>Describe the project or purpose of this purchase</label>
+          <textarea rows="3"></textarea>
           <br/>
-          <label for="order_date">When do you need this? Enter an ideal and latest date</label>
+          <label for="order_date"><span>*</span>When do you need this? Enter an ideal and latest date</label>
           <input type="text" name="order_date" id="order_date">
-        </form>
-      </div>
+          <br/>
+          <label for="approver"><span>*</span>Who approved this purchase?</label>
+          <select name="approver" id="approver">
+            <option value="unapproved">Not yet approved</option>
+            <option value="robin">Robin</option>
+            <option value="kevin">Kevin</option>
+          </select>
+          <label for="if_unapproved">If unapproved, who should be the approver?</label>
+          <select name="if_unapproved" id="if_unapproved">
+            <option value="robin">Robin</option>
+            <option value="kevin">Kevin</option>
+          </select>
+      </form>
     </div>
-    
   </div>
+</div>
 
-  
-  <!-- Import relevant scripts. -->
-  <script type="text/javascript" src="js/jquery.js"></script>
+<footer class="center">
+  <p>
+    Copyright &copy; BlueWire Computer Services Inc. 2016
+  </p>
+</footer>
+
+<!-- Import relevant scripts. -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
 
-  echo "Hello.";
+  echo var_dump($_POST);
 
 ?>

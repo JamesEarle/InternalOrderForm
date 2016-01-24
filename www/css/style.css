@@ -62,3 +62,12 @@ span {
   margin: 20px;
   text-align:left;
 }
+
+.submit {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+div.submit > input {
+    min-width:100px;
+}

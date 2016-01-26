@@ -25,6 +25,8 @@
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
+          
+          
           <hr>
           <h2>Item Details</h2>
           <label for="already_purchased"><span>*</span>Already Purchased?</label>
@@ -39,6 +41,17 @@
           <br/>
           <label for="quantity"><span>*</span>Quantity (Digits Only)</label>
           <input name="quantity" id="quantity" size="3" onkeypress="return validate(event)">
+          
+          <div>
+            <h3>Add or Remove an Item
+                <img src="img/add.png" class="item_list" id="add" alt="">
+                <img src="img/minus.png" class="item_list" id="minus" alt="">                
+            </h3>
+          </div>
+          
+          <div id="added_items">
+          </div>
+          
           <hr>
           <label for="resale"><span>*</span>Is this an expense or for resale?</label>
           <select name="resale" id="resale">

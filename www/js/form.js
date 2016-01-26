@@ -1,6 +1,57 @@
+/* global $ */
+
+var item_count = 0;
+
 $(document).ready(function() {
 	emailFieldListener();
+    addButtonListener();
 });
+
+function addButtonListener() {
+    addButtonCSS();
+    addButtonAppend();
+    minusButtonRemove();
+}
+
+function addButtonCSS() {
+    $('.item_list').mousedown(function() {
+        $(this).css('opacity', '0.7');
+    });
+    
+    $('.item_list').mouseup(function() {
+        $(this).css('opacity', '1');
+    });
+}
+
+function addButtonAppend() {
+    $('#add').click(function() {
+        $('#added_items').append(
+            "<div id='appended_" + item_count + "'>" +
+            '<h4>Item #' + (item_count+2) + '</h4>' +
+            '<label for="already_purchased_' + item_count + '"><span>*</span>Already Purchased?</label>' + 
+            '<select name="already_purchased_' + item_count + '" id="already_purchased_'+ item_count +'">' +
+                '<option value="no">No</option>' +
+                '<option value="yes">Yes</option>' +
+            '</select>' +
+            '<br/>' +
+            '<label for="item_link_' + item_count + '"><span>*</span>Link to Item(s) You Need To Purchase (Enter multiple links for the same item if you want someone to price check with shipping)</label>' + 
+            '<br/>' +
+            '<textarea rows="3" name="item_link_' + item_count + '" id="item_link_' + item_count + '"></textarea>' +
+            '<br/>' +
+            '<label for="quantity_' + item_count + '"><span>*</span>Quantity (Digits Only)</label>' +
+            '<input name="quantity_' + item_count + '" id="quantity_' + item_count + '" size="3" onkeypress="return validate(event)">' +
+            "</div>" 
+        );
+        item_count++;
+    });
+}
+
+function minusButtonRemove() {
+   $('#minus').click(function() {
+        item_count--;       
+        $("div").remove("#appended_" + item_count);
+    }); 
+}
 
 function emailFieldListener() {
 	$('#email').focusout(function() {

@@ -73,6 +73,10 @@ span {
     margin-bottom:10px;
 }
 
+.tabbed {
+    margin-left:30px;
+}
+
 div.submit > input {
     min-width:100px;
 }

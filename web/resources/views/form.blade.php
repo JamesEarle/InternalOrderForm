@@ -27,8 +27,8 @@
           <h2>Item Details</h2>
           <label for="already_purchased"><span>*</span>Already Purchased?</label>
           <select name="already_purchased" id="already_purchased" required="required">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
           </select>
           <br/>
           <label for="item_link"><span>*</span>Link to Item(s) You Need To Purchase (Enter multiple links for the same item if you want someone to price check with shipping)</label>
@@ -58,18 +58,18 @@
           <br/>
           <div class="tabbed">
             <label for="if_expense">If this is an expense, which internal company?</label>
-            <select name="if_expense" id="if_expense">
+            <select name="if_expense" id="if_expense" disabled>
                 <option value=""></option>
                 <option value="ZipTel">ZipTel</option>
                 <option value="BlueWire">BlueWire</option>
             </select>
             <br/>
             <label for="if_resale">If this is for resale, who are we selling it to?</label>
-            <input type="text" name="if_resale" id="if_resale">
+            <input type="text" name="if_resale" id="if_resale" disabled>
             <br/>
             <div class="tabbed">
                 <label for="if_resale_customer">Is the customer above a ZipTel customer or a BlueWire customer?</label>
-                <select name="if_resale_customer" id="if_resale_customer">
+                <select name="if_resale_customer" id="if_resale_customer" disabled>
                     <option value=""></option>                
                     <option value="ZipTel">ZipTel</option>
                     <option value="BlueWire">BlueWire</option>
@@ -95,6 +95,7 @@
             <option value="Kevin">Kevin</option>
           </select>
           <br/>
+          <input type="hidden" name="num_items" id="num_items" value="1">
           <div class="center submit">
               <input type="submit" name="submit" value="Submit">
           </div>

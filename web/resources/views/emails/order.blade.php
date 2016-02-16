@@ -13,51 +13,59 @@
         </style>    
 	</head>
 	<body>
-		<h2>Order from {{ $name }}</h2>
-
 		<div>
             <h4>Contact Information</h4>
-            <span>Full Name:</span>{{ $name }}
+            <span>Full Name:</span> {{ $name }}
             <br>
-			<span>Email: </span>{!! $email !!}
+			<span>Email:</span> {!! $email !!}
 		</div>
+        <br>
 		<div>
             <h4>Order Details</h4>
-            <span>Urgency of this order:</span> {{$order_urgency}} <br><br>
+            <span>Urgency of this order:</span> {{$order_urgency}} <br>
             
             <?php 
                 if($resale == 'resale') {
-                    echo "<span>Type of Order:</span>Resale <br><br>";
-                    echo "<span>Purchaser of This Order:</span> $if_resale <br><br>";
-                    echo "<span>Customer of:</span> $if_resale_customer <br><br>";
+                    echo "<span>Type of Order:</span>Resale <br>";
+                    echo "<span>Purchaser of This Order:</span> $if_resale <br>";
+                    echo "<span>Customer of:</span> $if_resale_customer <br>";
                 } else if($resale == 'expense') {
-                    echo "<span>Type of order:</span>Expense <br><br>";    
-                    echo "<span>Internal Company:</span> $if_expense <br><br>";            
+                    echo "<span>Type of order:</span>Expense <br>";    
+                    echo "<span>Internal Company:</span> $if_expense <br>";            
                 } else {
-                    echo "Type of order (expense or resale) is not known. <br><br>";
+                    echo "Type of order (expense or resale) is not known. <br>";
                 }
             ?>
             
-            <span>Purpose of Order: </span> {{$purpose}} <br><br>
-            <span>Preferred Order Date: </span> {{$order_date}} <br><br>
+            <span>Purpose of Order:</span> {{$purpose}} <br>
+            <span>Preferred Order Date:</span> {{$order_date}} <br>
             
             <?php 
                 if($approver == 'unapproved') {
-                    echo "This item is unapproved and should be approved by $if_unapproved. <br><br>";
+                    echo "This item is unapproved and should be approved by $if_unapproved. <br>";
                 } else {
-                    echo "This item has been approved by $approver. <br><br>";
+                    echo "This item has been approved by $approver. <br>";
                 }
             ?> 
-            <hr>
-            
+            <br>
             <h4>Item Details</h4>
             
-            <span>Nuber of Items:</span> {{$num_items}} <br><br>
+            <span>Number of Items:</span> {{$num_items}} <br>
             
-            <span>Test Item Detail:</span> {{$items_4}} <br><br>
+            <?php 
+                // echo var_dump($items);
+                $orig_index = 4;
+                for($i=0;$i<$num_items;$i++) {
+                    echo "<div><p><h4>Item #" . ($i + 1) . "</h4>";
+                    echo "<span>Already Purchased?</span> " . $items['items_' . $orig_index] . "<br>";
+                    echo "<span>Links to item(s) needed:</span> " . $items['items_' . strval($orig_index + 1)] . "<br>";
+                    echo "<span>Quantity:</span> " . $items['items_' . strval($orig_index + 2)] . "<br>";                    
+                    echo "</p></div>";
+                    $orig_index += 3;
+                }
+            ?>
             
 		</div>
-		<hr>
 		<br>
 		<footer>
             &copy; BlueWire Computer Services Inc.

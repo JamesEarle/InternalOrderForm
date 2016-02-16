@@ -1,43 +1,78 @@
 /* global $ */
 
-var item_count = 0;
+var item_count;
 
 $(document).ready(function() {
 	emailFieldListener();
-    addButtonListener();
+    buttonListener();
     requiredFieldListener();
 });
 
 function requiredFieldListener() {
     $('#resale').on('change', function() {
+        
+        var fe = [
+            $('#if_expense'),
+            $('#if_resale'),
+            $('#if_resale_customer')
+        ];
+        
         switch($(this).val()) {
             case 'donotknow':
-                $('#if_expense').removeProp('required');
-                $('#if_resale').removeProp('required');
-                $('#if_resale_customer').removeProp('required');
+                removeProperties(fe, 'required');
+                addProperties(fe, 'disabled');
+                resetValues(fe);
                 break;
             case 'expense':
-                $('#if_expense').prop('required', 'required');
-                $('#if_resale').removeProp('required');
-                $('#if_resale_customer').removeProp('required');
+                fe[0].prop('required', 'required');
+                fe[0].removeProp('disabled');
+                
+                var sub = [fe[1], fe[2]];
+                
+                removeProperties(sub, 'required');
+                addProperties(sub, 'disabled');
+                resetValues(sub);                
                 break;
             case 'resale':
-                $('#if_resale').prop('required', 'required');
-                $('#if_resale_customer').prop('required', 'required');
-                $('#if_expense').removeProp('required');
+                var sub = [fe[1], fe[2]];
+                
+                removeProperties(sub, 'disabled');
+                addProperties(sub, 'required');
+                
+                fe[0].removeProp('required');
+                fe[0].prop('disabled', 'disabled');
+                fe[0].val("");
                 
                 break;
         }
     });
 }
 
-function addButtonListener() {
-    addButtonCSS();
+function removeProperties(from, property) {
+    for(var i=0;i<from.length;i++) {
+        from[i].removeProp(property);
+    }
+}
+
+function addProperties(from, property) {
+    for(var i=0;i<from.length;i++) {
+        from[i].prop(property, property);
+    }
+}
+
+function resetValues(from) {
+    for(var i=0;i<from.length;i++) {
+        from[i].val("");
+    }
+}
+
+function buttonListener() {
+    buttonCSS();
     addButtonAppend();
     minusButtonRemove();
 }
 
-function addButtonCSS() {
+function buttonCSS() {
     $('.item_list').mousedown(function() {
         $(this).css('opacity', '0.7');
     });
@@ -49,13 +84,17 @@ function addButtonCSS() {
 
 function addButtonAppend() {
     $('#add').click(function() {
+        
+        item_count = parseInt($('#num_items').val()) + 1;
+        $('#num_items').val(item_count);
+        
         $('#added_items').append(
             "<div id='appended_" + item_count + "'>" +
-            '<h4>Item #' + (item_count+2) + '</h4>' +
+            '<h4>Item #' + item_count + '</h4>' +
             '<label for="already_purchased_' + item_count + '"><span>*</span>Already Purchased?</label>' + 
             '<select name="already_purchased_' + item_count + '" id="already_purchased_'+ item_count +'" required="required">' +
-                '<option value="no">No</option>' +
-                '<option value="yes">Yes</option>' +
+                '<option value="No">No</option>' +
+                '<option value="Yes">Yes</option>' +
             '</select>' +
             '<br/>' +
             '<label for="item_link_' + item_count + '"><span>*</span>Link to Item(s) You Need To Purchase (Enter multiple links for the same item if you want someone to price check with shipping)</label>' + 
@@ -66,14 +105,14 @@ function addButtonAppend() {
             '<input required="required" name="quantity_' + item_count + '" id="quantity_' + item_count + '" size="3" onkeypress="return validate(event)">' +
             "</div>" 
         );
-        item_count++;
     });
 }
 
 function minusButtonRemove() {
    $('#minus').click(function() {
-        item_count--;       
         $("div").remove("#appended_" + item_count);
+        item_count--;       
+        $('#num_items').val(item_count);        
     }); 
 }
 
@@ -106,6 +145,9 @@ function validate(event) {
 	return event.charCode >= 48 && event.charCode <= 57
 }
 
+/*
+    Highlights any field that triggers an error in a light red.
+*/
 function highlightError(element, flip) {
 	if(flip) {
 		$(element).css({

@@ -12,34 +12,23 @@ class OrderFormController extends Controller
 {
     public function index() 
     {
-        //    
         return view('form');
     }
     
     public function submit() 
-    {
+    {   
+        // Collect user input
         $input = Request::all();
+        
+        // $int_keys allows us to access $input using int indexes, 
+        // instead of associative key indexes.
         $int_keys = array_keys($input);
         
-        // Default there is 15 elements in the form. Divide 3 - 4 results in 1 item 
-        // and every time a new item is added, 3 more form elements are added
+        //echo var_dump($input);
         
+        //echo "<br><br>";
         
-        
-        
-        // General idea here is to add an invisible form element,
-        // and make it so it is updated by JS when new elements are added. No 
-        // need to do mod 3 nonsense to get number of items in the form.
-        // $num_items = $input['num_items'];
-        
-        echo var_dump($input);
-        
-        echo "<br><br>";
-        // $resale = $input['resale'];
-        
-        // $details = [];
-        
-        $items = [
+        $detail = [
             'name'               => $input['full_name'],
             'email'              => $input['email'],
             'order_urgency'      => $input['order_urgency'],
@@ -50,40 +39,38 @@ class OrderFormController extends Controller
             'purpose'            => $input['purpose'],
             'order_date'         => $input['order_date'],
             'approver'           => $input['approver'],
-            'if_unapproved'      => $input['if_unapproved']
+            'if_unapproved'      => $input['if_unapproved'],
+            'num_items'          => $input['num_items']
         ];
         
-        // Items in the list begin at $input index 4, because of elements before it in the form.
+        // Items in the list begin at $input index 4, 
+        // because of elements before it in the form.
         $orig_index = 4;
         
-        for($i=0;$i<$num_items;$i++) {
+        // Create an array of elements holding the variable number of items.
+        $items = array(); 
+        
+        for($i=0;$i<$input['num_items'];$i++) {
             $items["items_" . strval($orig_index)] = $input[$int_keys[$orig_index]];
             $items["items_" . strval($orig_index + 1)] = $input[$int_keys[$orig_index + 1]];
             $items["items_" . strval($orig_index + 2)] = $input[$int_keys[$orig_index + 2]];
-            
-            // array_push($items, $input[$int_keys[$orig_index]]);
-            // array_push($items, $input[$int_keys[$orig_index + 1]]);
-            // array_push($items, $input[$int_keys[$orig_index + 2]]);
             $orig_index += 3;
         }
         
-        // foreach($input as $in) {
-        //     array_push($details, $in);
-        // }
-                
-        // array_push($details, $num_items);
+        // Append item details to the end of the detail array.
+        $detail['items'] = $items;
         
-        echo var_dump($items);
+        echo $input['num_items'] . "<br><br>";
+        echo var_dump($items);  
         
-        $items['num_items'] = $num_items;        
-        
-        Mail::send('emails.order', $items, function($message) use ($input) {
+        Mail::send('emails.order', $detail, function($message) use ($input) {
                 $message->to("j_earle@hotmail.com", "To JE");
                 // $message->from($input['email'], $input['full_name']);
                 $message->from("earle.jamest@gmail.com", "From JE");
                 $message->subject("Order from " . $input['full_name']);
             });
-        // echo var_dump($input), '<br><br>', (count($input) / 3);   
-        return view('form'); 
+
+        return view('form');
+        // return redirect('/');
     }
 }

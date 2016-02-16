@@ -1,82 +1,72 @@
 body {
-  background: #ffffff;
+    background: #ffffff;
 }
-
 hr {
-  width: 93%;
-  border: 1px solid gray;
+    width: 93%;
+    border: 1px solid gray;
 }
-
 form > hr {
-  width:100%;
+    width: 100%;
 }
-
-label, input, select, textarea {
-  margin:5px;
-}
-
+label,
+input,
+select,
 textarea {
-  width:100%;
-  max-width: 100%;
+    margin: 5px;
 }
-
+textarea {
+    width: 100%;
+    max-width: 100%;
+}
 footer {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
-
-textarea, select, input {
+textarea,
+select,
+input {
     border: 2px solid #AAAAAA;
     border-radius: 3px;
 }
-
-textarea:focus, input:focus {
-  outline: none;
-  border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;
+textarea:focus,
+input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
 }
-
 span {
-  color: red;
-  margin-right:5px;
+    color: red;
+    margin-right: 5px;
 }
-
 .item_list {
-    width:32px;
-    height:32px;
+    width: 32px;
+    height: 32px;
 }
-
 .content {
-  text-align:center;
+    text-align: center;
 }
-
 .center {
-  text-align:center;
-  margin-left:auto;
-  margin-right:auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 .column {
-  margin-top:40px;
-  background: #F5F5F5;
-  max-width:700px;
-  border: 1px solid gray;
-  margin-bottom: 40px;
+    margin-top: 40px;
+    background: #F5F5F5;
+    max-width: 700px;
+    border: 1px solid gray;
+    margin-bottom: 40px;
 }
-
 .form {
-  margin: 20px;
-  text-align:left;
+    margin: 20px;
+    text-align: left;
 }
-
 .submit {
-    margin-top:10px;
-    margin-bottom:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
 .tabbed {
-    margin-left:30px;
+    margin-left: 30px;
 }
-
 div.submit > input {
-    min-width:100px;
+    min-width: 100px;
 }

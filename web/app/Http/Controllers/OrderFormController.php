@@ -59,18 +59,15 @@ class OrderFormController extends Controller
         
         // Append item details to the end of the detail array.
         $detail['items'] = $items;
-        
-        echo $input['num_items'] . "<br><br>";
-        echo var_dump($items);  
-        
+               
         Mail::send('emails.order', $detail, function($message) use ($input) {
+                // TODO: Replace TO with registered ZipTel address 
+                // if priority is HIGH, cc Kevin and Robin.
                 $message->to("j_earle@hotmail.com", "To JE");
-                // $message->from($input['email'], $input['full_name']);
-                $message->from("earle.jamest@gmail.com", "From JE");
+                $message->from($input['email'], $input['full_name']);
                 $message->subject("Order from " . $input['full_name']);
             });
 
-        return view('form');
-        // return redirect('/');
+        return redirect('/');
     }
 }

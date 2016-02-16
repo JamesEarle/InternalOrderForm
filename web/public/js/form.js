@@ -9,8 +9,28 @@ $(document).ready(function() {
 });
 
 function requiredFieldListener() {
+    resaleFieldListener();
+    approverFieldListener();
+}
+
+function approverFieldListener() {
+    $('#approver').on("change", function() {
+        switch($(this).val()) {
+            case "unapproved":
+                $('#if_unapproved').prop('required', 'required');
+                $('#if_unapproved').removeProp('disabled');
+                break;
+            case "Robin":
+            case "Kevin":
+                $('#if_unapproved').removeProp('required');
+                $('#if_unapproved').prop('disabled', 'disabled');
+                break;
+        }
+    });
+}
+
+function resaleFieldListener() {
     $('#resale').on('change', function() {
-        
         var fe = [
             $('#if_expense'),
             $('#if_resale'),
@@ -35,7 +55,7 @@ function requiredFieldListener() {
                 break;
             case 'resale':
                 var sub = [fe[1], fe[2]];
-                
+                                
                 removeProperties(sub, 'disabled');
                 addProperties(sub, 'required');
                 

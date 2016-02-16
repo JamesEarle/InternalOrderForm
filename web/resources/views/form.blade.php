@@ -77,7 +77,7 @@
             </div>
           </div>
           <label for="purpose"><span>*</span>Describe the project or purpose of this purchase</label>
-          <textarea rows="3" required='required'></textarea>
+          <textarea rows="3" name="purpose" id="purpose" required='required'></textarea>
           <br/>
           <label for="order_date"><span>*</span>When do you need this? Enter an ideal and latest date</label>
           <input type="text" name="order_date" id="order_date" required='required'>

@@ -18,9 +18,9 @@
           <br/>
           <label for="order_urgency"><span>*</span>Urgency of This Order</label>
           <select name="order_urgency" id="order_urgency" required="required">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
           </select>
           
           <hr>
@@ -60,8 +60,8 @@
             <label for="if_expense">If this is an expense, which internal company?</label>
             <select name="if_expense" id="if_expense">
                 <option value=""></option>
-                <option value="ziptel">ZipTel</option>
-                <option value="bluewire">BlueWire</option>
+                <option value="ZipTel">ZipTel</option>
+                <option value="BlueWire">BlueWire</option>
             </select>
             <br/>
             <label for="if_resale">If this is for resale, who are we selling it to?</label>
@@ -71,8 +71,8 @@
                 <label for="if_resale_customer">Is the customer above a ZipTel customer or a BlueWire customer?</label>
                 <select name="if_resale_customer" id="if_resale_customer">
                     <option value=""></option>                
-                    <option value="ziptel">ZipTel</option>
-                    <option value="bluewire">BlueWire</option>
+                    <option value="ZipTel">ZipTel</option>
+                    <option value="BlueWire">BlueWire</option>
                 </select>
             </div>
           </div>
@@ -85,14 +85,14 @@
           <label for="approver"><span>*</span>Who approved this purchase?</label>
           <select name="approver" id="approver" required='required'>
             <option value="unapproved">Not yet approved</option>
-            <option value="robin">Robin</option>
-            <option value="kevin">Kevin</option>
+            <option value="Robin">Robin</option>
+            <option value="Kevin">Kevin</option>
           </select>
           <label for="if_unapproved">If unapproved, who should be the approver?</label>
           <select name="if_unapproved" id="if_unapproved">
             <option value=""></option>
-            <option value="robin">Robin</option>
-            <option value="kevin">Kevin</option>
+            <option value="Robin">Robin</option>
+            <option value="Kevin">Kevin</option>
           </select>
           <br/>
           <div class="center submit">

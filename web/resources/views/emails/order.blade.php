@@ -5,7 +5,10 @@
         <style>
             span {
                 font-weight: bold;
-                text-decoration:underline;
+            }
+            
+            h1, h2, h3, h4 {
+                text-decoration: underline;
             }
         </style>    
 	</head>
@@ -14,47 +17,46 @@
 
 		<div>
             <h4>Contact Information</h4>
-            <span>Full Name: </span>{{ $name }}
-			<span>Email:     </span>{!! $email !!}
+            <span>Full Name:</span>{{ $name }}
+            <br>
+			<span>Email: </span>{!! $email !!}
 		</div>
 		<div>
-            <table>
-                <tr><td>Urgency of this order </td><td>{{$order_urgency}}</td></tr>
-                
-                <?php 
-                    if($resale == 'resale') {
-                        echo "<tr><td>This is a </td><td>Resale</td></tr>";
-                        echo "<tr><td>Who are we selling this to?</td><td>$if_resale</td></tr>";
-                        echo "<tr><td>Customer of </td><td>$if_resale_customer</td></tr>";
-                    } else if($resale == 'expense') {
-                        echo "<tr><td>This is an </td><td>Expense</td></tr>";    
-                        echo "<tr><td>Internal Company</td><td>$if_expense</td></tr>";            
-                    } else {
-                        echo "<tr><td>Expense or resale is not known.</td></tr>";
-                    }
-                ?>
-                
-                <tr><td>Purpose of order </td><td>{{$purpose}}</td></tr>
-                <tr><td>Preferred order date </td><td>{{$order_date}}</td></tr>   
-                
-                <?php 
-                    if($approver == 'unapproved') {
-                        echo "";
-                    } else {
-                        echo "";
-                    }
-                ?>                             
-                
-            </table>
-			{{ $purpose }}
-			{{ $order_date }}
-			{{ $approver }}
-			{{ $if_unapproved }}
+            <h4>Order Details</h4>
+            <span>Urgency of this order:</span> {{$order_urgency}} <br><br>
+            
+            <?php 
+                if($resale == 'resale') {
+                    echo "<span>Type of Order:</span>Resale <br><br>";
+                    echo "<span>Purchaser of This Order:</span> $if_resale <br><br>";
+                    echo "<span>Customer of:</span> $if_resale_customer <br><br>";
+                } else if($resale == 'expense') {
+                    echo "<span>Type of order:</span>Expense <br><br>";    
+                    echo "<span>Internal Company:</span> $if_expense <br><br>";            
+                } else {
+                    echo "Type of order (expense or resale) is not known. <br><br>";
+                }
+            ?>
+            
+            <span>Purpose of Order: </span> {{$purpose}} <br><br>
+            <span>Preferred Order Date: </span> {{$order_date}} <br><br>
+            
+            <?php 
+                if($approver == 'unapproved') {
+                    echo "This item is unapproved and should be approved by $if_unapproved. <br><br>";
+                } else {
+                    echo "This item has been approved by $approver. <br><br>";
+                }
+            ?> 
+            <hr>
+            
+            <h4>Item Details</h4>
+            
+            <span>Nuber of Items:</span> {{$num_items}} <br><br>
+            
+            <span>Test Item Detail:</span> {{$items_4}} <br><br>
+            
 		</div>
-		</br>
-		<div>
-		</div>
-		<br>
 		<hr>
 		<br>
 		<footer>

@@ -37,6 +37,8 @@ function resaleFieldListener() {
             $('#if_resale_customer')
         ];
         
+        var sub = [fe[1], fe[2]];
+                
         switch($(this).val()) {
             case 'donotknow':
                 removeProperties(fe, 'required');
@@ -46,16 +48,12 @@ function resaleFieldListener() {
             case 'expense':
                 fe[0].prop('required', 'required');
                 fe[0].removeProp('disabled');
-                
-                var sub = [fe[1], fe[2]];
-                
+                               
                 removeProperties(sub, 'required');
                 addProperties(sub, 'disabled');
                 resetValues(sub);                
                 break;
-            case 'resale':
-                var sub = [fe[1], fe[2]];
-                                
+            case 'resale':                               
                 removeProperties(sub, 'disabled');
                 addProperties(sub, 'required');
                 

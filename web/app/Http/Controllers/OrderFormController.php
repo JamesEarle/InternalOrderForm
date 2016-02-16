@@ -22,11 +22,7 @@ class OrderFormController extends Controller
         
         // $int_keys allows us to access $input using int indexes, 
         // instead of associative key indexes.
-        $int_keys = array_keys($input);
-        
-        //echo var_dump($input);
-        
-        //echo "<br><br>";
+        $int_keys = array_keys($input);        
         
         $detail = [
             'name'               => $input['full_name'],

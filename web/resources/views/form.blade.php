@@ -9,7 +9,6 @@
     <hr>
     <div class="form">
       {!! Form::open(['url' => 'submit']) !!}
-      <!--<form action="submit.php" method="post">-->
           <label for="full_name"><span>*</span>Full Name</label>
           <input type="text" name="full_name" id="full_name" required="required">
           <br/>

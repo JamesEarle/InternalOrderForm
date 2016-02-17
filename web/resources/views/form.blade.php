@@ -77,6 +77,11 @@
                 </select>
                 <input type="hidden" name="if_resale_customer" value="">                
             </div>
+            <div class="tabbed">
+                <label for="if_resale_value">How much are we selling this item for?</label>
+                <input type="text" name="if_resale_value" id="if_resale_value" disabled>
+                <input type="hidden" name="if_resale_value" value="">                
+            </div>
           </div>
           <label for="purpose"><span>*</span>Describe the project or purpose of this purchase</label>
           <textarea rows="3" name="purpose" id="purpose" required='required'></textarea>

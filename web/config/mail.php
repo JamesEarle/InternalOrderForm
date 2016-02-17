@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => "earle.jamest@gmail.com", 'name' => "James Earle"],
+    'from' => ['address' => "internalorders@ziptel.ca", 'name' => "James Earle"],
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', ''),
 
     /*
     |--------------------------------------------------------------------------

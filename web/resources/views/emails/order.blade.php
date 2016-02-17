@@ -29,6 +29,9 @@
                     echo "<span>Type of Order:</span>Resale <br>";
                     echo "<span>Purchaser of This Order:</span> $if_resale <br>";
                     echo "<span>Customer of:</span> $if_resale_customer <br>";
+                    if($if_resale_value != "") {
+                        echo "<span>Resale value:</span> $if_resale_value <br>";
+                    }
                 } else if($resale == 'expense') {
                     echo "<span>Type of order:</span>Expense <br>";    
                     echo "<span>Internal Company:</span> $if_expense <br>";            

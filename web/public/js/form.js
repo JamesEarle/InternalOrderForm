@@ -31,12 +31,16 @@ function approverFieldListener() {
 
 function resaleFieldListener() {
     $('#resale').on('change', function() {
+        
+        // Field Elements
         var fe = [
             $('#if_expense'),
             $('#if_resale'),
-            $('#if_resale_customer')
+            $('#if_resale_customer'),
+            $('#if_resale_value')
         ];
         
+        // These elements are a subset of the above, but always manipulated together.
         var sub = [fe[1], fe[2]];
                 
         switch($(this).val()) {
@@ -51,10 +55,14 @@ function resaleFieldListener() {
                                
                 removeProperties(sub, 'required');
                 addProperties(sub, 'disabled');
-                resetValues(sub);                
+                addProperties([fe[3]], 'disabled');
+                resetValues(sub);
+                fe[3].val("");                
                 break;
             case 'resale':                               
                 removeProperties(sub, 'disabled');
+                removeProperties([fe[3]], 'disabled');
+                
                 addProperties(sub, 'required');
                 
                 fe[0].removeProp('required');

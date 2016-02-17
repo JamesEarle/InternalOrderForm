@@ -32,6 +32,7 @@ class OrderFormController extends Controller
             'if_expense'         => $input['if_expense'],
             'if_resale'          => $input['if_resale'],
             'if_resale_customer' => $input['if_resale_customer'],
+            'if_resale_value'    => $input['if_resale_value'],
             'purpose'            => $input['purpose'],
             'order_date'         => $input['order_date'],
             'approver'           => $input['approver'],
@@ -59,7 +60,12 @@ class OrderFormController extends Controller
         Mail::send('emails.order', $detail, function($message) use ($input) {
                 // TODO: Replace TO with registered ZipTel address 
                 // if priority is HIGH, cc Kevin and Robin.
-                $message->to("j_earle@hotmail.com", "To JE");
+                $message->to("orders@ziptel.ca", "ZipTel");
+                if($input['order_urgency'] == "High") {
+                    $message->cc("robin@ziptel.ca", "Robin Moore");
+                    $message->cc("kevin@ziptel.ca", "Kevin Moniz");
+                }
+                $message->cc($input['email'], $input['full_name']);
                 $message->from($input['email'], $input['full_name']);
                 $message->subject("Order from " . $input['full_name']);
             });
